@@ -3,7 +3,7 @@ const formulario = document.querySelector("form");
 const inputText = document.querySelector('form input[type="text"]');
 
 //carga inicial de los datos
-fetch("http://localhost:4000/tareas")
+fetch("https://api-todo-25tp.onrender.com/tareas")
 .then(respuesta => respuesta.json())
 .then(tareas => {
     tareas.forEach(({id,tarea,terminada}) => {
@@ -16,7 +16,7 @@ formulario.addEventListener("submit", async evento =>{
     if(inputText.value.trim() != ""){
 
         let tarea = inputText.value.trim();
-        let {id,error} = await fetch("http://localhost:4000/tareas/nueva",{
+        let {id,error} = await fetch("https://api-todo-25tp.onrender.com/tareas/nueva",{
             method : "POST",
             body : JSON.stringify({tarea}),
             headers : {
@@ -29,7 +29,7 @@ formulario.addEventListener("submit", async evento =>{
             return inputText.value = "";
         }
     }
-    console.log("mostrar error al usuario");
+    //console.log("mostrar error al usuario");
 });
 
 //
